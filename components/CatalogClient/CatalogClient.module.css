@@ -1,0 +1,12 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+.error {
+  text-align: center;
+  padding: 60px 0;
+  font-size: 16px;
+  color: #ef4444;
+}

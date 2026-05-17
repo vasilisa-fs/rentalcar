@@ -1,0 +1,44 @@
+.home_section {
+  height: calc(100vh - 68px); /* вычитаем высоту хедера */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  background-image: url('../public/main_background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+}
+@media (min-resolution: 192dpi) {
+  .home_section {
+    background-image: url('../public/main_background2x.jpg');
+  }
+}
+
+.title {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-60);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.text {
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-24);
+  line-height: 1.33333;
+  color: var(--white);
+  margin-bottom: 40px;
+}
+.button {
+  display: inline-block;
+  padding: 12px 88px;
+  background-color: var(--button);
+  color: var(--white);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-16);
+  border-radius: 12px;
+  width: 276px;
+  height: 44px;
+  text-align: center;
+}

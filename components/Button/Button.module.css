@@ -1,0 +1,45 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-16);
+  line-height: 1.25;
+  cursor: pointer;
+  border: none;
+  transition:
+    background-color 250ms ease-in-out,
+    border-color 250ms ease-in-out;
+}
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.md {
+  padding: 12px 36px;
+  width: 156px;
+  height: 44px;
+}
+.lg {
+  padding: 12px 88px;
+  width: 276px;
+  height: 44px;
+}
+.primary {
+  background-color: var(--button);
+  color: var(--white);
+}
+.primary:hover,
+.primary:focus {
+  background-color: var(--button-hover);
+}
+.outline {
+  background-color: transparent;
+  color: var(--main);
+  border: 1px solid var(--button);
+}
+.outline:hover,
+.outline:focus {
+  border-color: var(--button-hover);
+}

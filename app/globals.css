@@ -1,0 +1,76 @@
+:root {
+  --font-family: 'Manrope', sans-serif;
+  --second-family: 'Inter', sans-serif;
+  --main: #101828;
+  --gray: #8d929a;
+  --gray-light: #dadde1;
+  --badges: #f2f4f7;
+  --inputs: #f7f7f7;
+  --white: #fff;
+  --button: #3470ff;
+  --button-hover: #0b44cd;
+  --light-blue: #00aad4;
+  --bg: #f5f5f5;
+  --dark-blue: #0095ba;
+  --fs-12: 12px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-24: 24px;
+  --fs-60: 60px;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-family), sans-serif;
+  background-color: var(--white);
+  font-weight: var(--fw-medium);
+  line-height: 1.25;
+  color: var(--main);
+}
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 120px;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+ol,
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+input,
+textarea,
+select {
+  outline: none;
+}
+textarea {
+  resize: none;
+}
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
