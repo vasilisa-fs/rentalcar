@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchCars } from '@/lib/serverApi';
 import { CarFilters } from '@/types/cars';
-import Filters from '@/components/Filters/SearchFilters';
+import Filters from '@/components/SearchFilters/SearchFilters';
 import CarList from '@/components/CarList/CarList';
 import Pagination from '@/components/Pagination/Pagination';
 import css from './CatalogClient.module.css';
