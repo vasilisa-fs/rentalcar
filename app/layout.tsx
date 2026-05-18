@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Manrope } from 'next/font/google';
+import { Inter, Manrope } from 'next/font/google';
 import 'modern-normalize/modern-normalize.css';
 import './globals.css';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
@@ -10,6 +10,13 @@ const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-manrope',
   weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  weight: ['400', '600'],
   display: 'swap',
 });
 
@@ -31,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} data-scroll-behavior="smooth"`}
+      className={`${inter.variable} ${manrope.variable} data-scroll-behavior="smooth"`}
     >
       <body>
         <TanStackProvider>

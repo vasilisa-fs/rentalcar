@@ -122,8 +122,8 @@
   border-radius: 0 12px 12px 0;
 }
 
-.inputWrapper:focus-within {
-  border-color: #3470ff;
+.inputWrapper:hover {
+  border-color: var(--button-hover);
 }
 
 .inputPrefix {

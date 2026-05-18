@@ -1,92 +1,127 @@
 .infoCard {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
+/* Title row */
 .titleRow {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 16px;
-  flex-wrap: wrap;
+  margin-bottom: 8px;
 }
 
 .carTitle {
-  font-size: 24px;
   font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #101828;
 }
 
 .articleId {
-  font-size: 14px;
-  color: #9ca3af;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #8d929a;
+  white-space: nowrap;
 }
 
+/* Meta: location + mileage */
 .meta {
   display: flex;
+  align-items: center;
   gap: 16px;
-  flex-wrap: wrap;
+  margin-bottom: 16px;
 }
 
 .metaItem {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 14px;
-  color: #6b7280;
-}
-
-.price {
-  font-size: 32px;
-  font-weight: 700;
-  color: #3470ff;
-}
-
-.description {
-  font-size: 14px;
-  color: #4b5563;
-  line-height: 1.6;
-}
-
-.divider {
-  border: none;
-  border-top: 1px solid #f0f0f0;
-}
-
-.sectionTitle {
+  font-weight: 500;
   font-size: 16px;
-  font-weight: 600;
+  line-height: 1.25;
+  color: #101828;
 }
 
+/* Price */
+.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #3470ff;
+  margin-bottom: 32px;
+}
+
+/* Description */
+.description {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+  margin-bottom: 68px;
+}
+
+/* Section title */
+.sectionTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  margin-bottom: 20px;
+}
+
+/* Check list */
 .checkList {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+  margin-bottom: 110px;
 }
 
 .checkItem {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
-  color: #374151;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
 }
 
+.checkItem svg {
+  flex-shrink: 0;
+}
+
+/* Spec list */
 .specList {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+  margin-bottom: 110px;
 }
 
 .specItem {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
-  color: #374151;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #101828;
+}
+
+.specItem svg {
+  flex-shrink: 0;
+}
+
+/* No divider needed — margin-bottom handles spacing */
+.divider {
+  display: none;
 }

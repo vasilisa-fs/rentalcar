@@ -45,7 +45,7 @@ const CarDetails = ({ car }: Props) => {
       <ul className={css.checkList}>
         {car.rentalConditions?.map((c, i) => (
           <li key={i} className={css.checkItem}>
-            <svg width="20" height="20">
+            <svg width="16" height="16">
               <use href="/sprite.svg#icon-check-circle" />
             </svg>
             {c}
@@ -59,25 +59,25 @@ const CarDetails = ({ car }: Props) => {
       <h3 className={css.sectionTitle}>Car Specifications:</h3>
       <ul className={css.specList}>
         <li className={css.specItem}>
-          <svg width="20" height="20">
+          <svg width="16" height="16">
             <use href="/sprite.svg#icon-calendar" />
           </svg>
           Year: {car.year}
         </li>
         <li className={css.specItem}>
-          <svg width="20" height="20">
+          <svg width="16" height="16">
             <use href="/sprite.svg#icon-car" />
           </svg>
           Type: {car.type}
         </li>
         <li className={css.specItem}>
-          <svg width="20" height="20">
+          <svg width="16" height="16">
             <use href="/sprite.svg#icon-fuel" />
           </svg>
           Fuel Consumption: {car.fuelConsumption}
         </li>
         <li className={css.specItem}>
-          <svg width="20" height="20">
+          <svg width="16" height="16">
             <use href="/sprite.svg#icon-engine" />
           </svg>
           Engine Size: {car.engine}
@@ -91,7 +91,7 @@ const CarDetails = ({ car }: Props) => {
       <ul className={css.checkList}>
         {features.map((f, i) => (
           <li key={i} className={css.checkItem}>
-            <svg width="20" height="20">
+            <svg width="16" height="16">
               <use href="/sprite.svg#icon-check-circle" />
             </svg>
             {f}

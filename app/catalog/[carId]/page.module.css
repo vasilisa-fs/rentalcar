@@ -1,0 +1,44 @@
+.page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+.layout {
+  display: flex;
+  gap: 72px;
+  align-items: flex-start;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  flex-shrink: 0;
+}
+
+.imageWrapper {
+  width: 640px;
+  height: 512px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.image {
+  width: 640px;
+  height: 512px;
+  object-fit: cover;
+  display: block;
+}
+
+.right {
+  flex: 1;
+}
+
+.error {
+  text-align: center;
+  padding: 60px 0;
+  font-size: 16px;
+  color: #6b7280;
+}
