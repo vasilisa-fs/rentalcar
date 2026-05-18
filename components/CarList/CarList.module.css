@@ -3,10 +3,9 @@
   display: grid;
   grid-template-columns: repeat(4, 276px);
   gap: 48px 32px;
-  padding: 0;
+  padding-top: 56px;
   margin: 0;
   justify-content: center;
-  max-width: 1200px;
   margin-inline: auto;
 }
 
@@ -20,7 +19,7 @@
 }
 
 .emptyTitle {
-  font-size: 20px;
-  font-weight: 600;
-  color: #374151;
+  font-size: var(--fs-18);
+  font-weight: var(--fw-semibold);
+  color: #374150;
 }

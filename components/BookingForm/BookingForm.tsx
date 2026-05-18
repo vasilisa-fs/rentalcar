@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation } from '@tanstack/react-query';
-import { submitBooking } from '@/lib/serverApi';
+import { submitBooking } from '@/lib/api/api';
 import { Formik, Form, Field, FieldProps, FormikHelpers } from 'formik';
 import { BookingFormSchema } from './BookingFormSchema';
 import DatePicker from 'react-datepicker';
@@ -17,8 +17,8 @@ interface Props {
 interface BookingFormValues {
   name: string;
   email: string;
-  bookingDate: string;
-  comment: string;
+  bookingDate?: string;
+  comment?: string;
 }
 
 const initialValues: BookingFormValues = {
@@ -31,7 +31,11 @@ const initialValues: BookingFormValues = {
 const BookingForm = ({ carId }: Props) => {
   const { mutate, isPending } = useMutation({
     mutationFn: ({ name, email, comment }: BookingFormValues) =>
-      submitBooking(carId, { name, email, comment }),
+      submitBooking(carId, {
+        name,
+        email,
+        ...(comment ? { comment } : {}),
+      }),
     onSuccess: (data) => {
       toast.success(data.message);
     },
@@ -63,94 +67,90 @@ const BookingForm = ({ carId }: Props) => {
       >
         {({ setFieldValue, values }) => (
           <Form className={css.form} noValidate>
-            {/* Name */}
-            <Field name="name">
-              {({ field, meta }: FieldProps) => {
-                const hasError = meta.touched && meta.error;
-                return (
-                  <div className={css.fieldWrapper}>
+            <div className={css.fields}>
+              {/* Name */}
+              <Field name="name">
+                {({ field, meta }: FieldProps) => (
+                  <div className={css.fieldSet}>
                     <input
                       {...field}
                       type="text"
                       placeholder="Name*"
-                      className={`${css.input} ${hasError ? css.inputError : ''}`}
+                      className={`${css.input} ${meta.touched && meta.error ? css.inputError : ''}`}
                     />
-                    {hasError && (
+                    {meta.touched && meta.error && (
                       <span className={css.error}>{meta.error}</span>
                     )}
                   </div>
-                );
-              }}
-            </Field>
+                )}
+              </Field>
 
-            {/* Email */}
-            <Field name="email">
-              {({ field, meta }: FieldProps) => {
-                const hasError = meta.touched && meta.error;
-                return (
-                  <div className={css.fieldWrapper}>
+              {/* Email */}
+              <Field name="email">
+                {({ field, meta }: FieldProps) => (
+                  <div className={css.fieldSet}>
                     <input
                       {...field}
                       type="email"
                       placeholder="Email*"
-                      className={`${css.input} ${hasError ? css.inputError : ''}`}
+                      className={`${css.input} ${meta.touched && meta.error ? css.inputError : ''}`}
                     />
-                    {hasError && (
+                    {meta.touched && meta.error && (
                       <span className={css.error}>{meta.error}</span>
                     )}
                   </div>
-                );
-              }}
-            </Field>
+                )}
+              </Field>
 
-            {/* Booking Date */}
-            <div className={css.fieldWrapper}>
-              <DatePicker
-                selected={
-                  values.bookingDate ? new Date(values.bookingDate) : null
-                }
-                onChange={(date: Date | null) =>
-                  setFieldValue(
-                    'bookingDate',
-                    date ? date.toISOString().split('T')[0] : ''
-                  )
-                }
-                placeholderText="Booking date"
-                dateFormat="dd.MM.yyyy"
-                minDate={new Date()}
-                className={css.input}
-                wrapperClassName={css.datepickerWrapper}
-                calendarStartDay={1}
-                fixedHeight={false}
-                showPopperArrow
-                formatWeekDay={(nameOfDay) =>
-                  nameOfDay.slice(0, 3).toUpperCase()
-                }
-              />
-            </div>
+              {/* Booking Date */}
+              <div className={css.fieldSet}>
+                <DatePicker
+                  selected={
+                    values.bookingDate ? new Date(values.bookingDate) : null
+                  }
+                  onChange={(date: Date | null) =>
+                    setFieldValue(
+                      'bookingDate',
+                      date ? date.toISOString().split('T')[0] : ''
+                    )
+                  }
+                  placeholderText="Booking date"
+                  dateFormat="dd.MM.yyyy"
+                  minDate={new Date()}
+                  className={css.input}
+                  wrapperClassName={css.datepickerWrapper}
+                  calendarStartDay={1}
+                  showPopperArrow
+                  formatWeekDay={(nameOfDay) =>
+                    nameOfDay.slice(0, 3).toUpperCase()
+                  }
+                />
+              </div>
 
-            {/* Comment */}
-            <Field name="comment">
-              {({ field, meta }: FieldProps) => {
-                const hasError = meta.touched && meta.error;
-                return (
-                  <div className={css.fieldWrapper}>
+              {/* Comment */}
+              <Field name="comment">
+                {({ field, meta }: FieldProps) => (
+                  <div className={css.fieldSet}>
                     <textarea
                       {...field}
                       placeholder="Comment"
-                      className={`${css.textarea} ${hasError ? css.inputError : ''}`}
-                      rows={4}
+                      className={`${css.textarea} ${meta.touched && meta.error ? css.inputError : ''}`}
                     />
-                    {hasError && (
+                    {meta.touched && meta.error && (
                       <span className={css.error}>{meta.error}</span>
                     )}
                   </div>
-                );
-              }}
-            </Field>
+                )}
+              </Field>
+            </div>
 
-            <Button type="submit" size="md" disabled={isPending}>
-              {isPending ? 'Sending...' : 'Send'}
+            <Button
+              type="submit"
+              size="md"
+              isLoading={isPending}
+              loadingText="Sending..."
+            >
+              Send
             </Button>
           </Form>
         )}

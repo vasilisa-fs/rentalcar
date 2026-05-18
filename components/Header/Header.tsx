@@ -8,7 +8,7 @@ const Header = () => {
   const pathname = usePathname();
   return (
     <header className={css.header}>
-      <div className={css.headerContainer}>
+      <div className={`container ${css.headerContainer}`}>
         <Link href="/" className={css.logo_link}>
           <svg className={css.logo}>
             <use href="/sprite.svg#icon-logo"></use>

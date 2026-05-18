@@ -17,7 +17,13 @@ const Pagination = ({ hasNextPage, isFetchingNextPage, onLoadMore }: Props) => {
       {isFetchingNextPage ? (
         <div className={css.spinner} />
       ) : (
-        <Button variant="outline" onClick={onLoadMore}>
+        <Button
+          variant="outline"
+          onClick={onLoadMore}
+          disabled={isFetchingNextPage}
+          isLoading={isFetchingNextPage}
+          loadingText="Loading..."
+        >
           Load more
         </Button>
       )}

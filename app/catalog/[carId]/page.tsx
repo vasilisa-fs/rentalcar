@@ -1,49 +1,41 @@
-'use client';
-
-import { useQuery } from '@tanstack/react-query';
-import { fetchCarById } from '@/lib/serverApi';
-import CarDetails from '@/components/CarDetails/CarDetails';
-import BookingForm from '@/components/BookingForm/BookingForm';
-import Loader from '@/components/Loader/Loader';
-import css from './page.module.css';
-import { use } from 'react';
+import type { Metadata } from 'next';
+import { fetchCarById } from '@/lib/api/api';
+import CarDetailClient from './CarDetailClient';
 
 interface Props {
   params: Promise<{ carId: string }>;
 }
 
-export default function CarDetailPage({ params }: Props) {
-  const { carId } = use(params);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { carId } = await params;
 
-  const {
-    data: car,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ['car', carId],
-    queryFn: () => fetchCarById(carId),
-  });
+  const car = await fetchCarById(carId);
 
-  if (isLoading) return <Loader />;
-  if (isError || !car) return <p className={css.error}>Car not found.</p>;
+  if (!car) {
+    return {
+      title: 'Car not found | RentalCar',
+    };
+  }
 
-  return (
-    <div className={css.page}>
-      <div className={css.layout}>
-        <div className={css.left}>
-          <div className={css.imageWrapper}>
-            <img
-              src={car.img}
-              alt={`${car.brand} ${car.model}`}
-              className={css.image}
-            />
-          </div>
-          <BookingForm carId={carId} />
-        </div>
-        <div className={css.right}>
-          <CarDetails car={car} />
-        </div>
-      </div>
-    </div>
-  );
+  return {
+    title: `${car.brand} ${car.model} (${car.year}) | RentalCar`,
+    description: car.description,
+
+    openGraph: {
+      images: [
+        {
+          url: car.img,
+          width: 1200,
+          height: 630,
+          alt: `${car.brand} ${car.model}`,
+        },
+      ],
+    },
+  };
+}
+
+export default async function Page({ params }: Props) {
+  const { carId } = await params;
+
+  return <CarDetailClient carId={carId} />;
 }

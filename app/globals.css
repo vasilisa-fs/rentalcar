@@ -16,6 +16,7 @@
   --fs-14: 14px;
   --fs-16: 16px;
   --fs-18: 18px;
+  --fs-20: 20px;
   --fs-24: 24px;
   --fs-60: 60px;
   --fw-regular: 400;
@@ -33,11 +34,13 @@ body {
   line-height: 1.25;
   color: var(--main);
 }
+
 .container {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 120px;
 }
+
 body,
 h1,
 h2,

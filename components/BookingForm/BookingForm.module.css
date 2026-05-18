@@ -1,59 +1,71 @@
 .card {
   background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
   padding: 32px;
+  width: 640px;
+  height: 488px;
 }
 
 .title {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 1.2;
-  color: #101828;
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-20);
   margin-bottom: 8px;
 }
 
 .subtitle {
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-16);
   line-height: 1.25;
-  color: #8d929a;
+  color: var(--gray);
   margin-bottom: 24px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
-.fieldWrapper {
+.fields {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.fieldSet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.fieldSet:last-child {
+  margin-bottom: 0;
 }
 
 .input {
   cursor: pointer;
   width: 100%;
   height: 48px;
-  padding: 14px 20px;
+  padding: 12px 20px;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: var(--fs-16);
+  font-weight: var(--fw-medium);
   line-height: 1.25;
   outline: none;
-  color: #8d929a;
-  background: #f7f7f7;
+  color: var(--gray);
+  background: var(--inputs);
+  transition: box-shadow 250ms ease-in-out;
 }
+
 .input::placeholder {
-  color: #8d929a;
+  color: var(--gray);
 }
-.input:focus,
+
 .input:hover {
-  color: #101828;
-  background: #f0f0f0;
+  color: var(--main);
+  background: var(--inputs);
   box-shadow: 0 0 0 1px var(--button-hover);
 }
 
@@ -68,31 +80,32 @@
   padding: 14px 20px;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: var(--fs-16);
+  font-weight: var(--fw-medium);
   line-height: 1.25;
   outline: none;
   resize: none;
-  color: #8d929a;
-  background: #f7f7f7;
-  font-family: inherit;
+  color: var(--gray);
+  background: var(--inputs);
+  transition: box-shadow 250ms ease-in-out;
 }
-.input::placeholder {
-  color: #8d929a;
-}
+
 .textarea::placeholder {
-  color: #8d929a;
+  color: var(--gray);
 }
-.textarea:focus,
+
 .textarea:hover {
-  color: #101828;
-  background: #f0f0f0;
+  color: var(--main);
+  background: var(--inputs);
   box-shadow: 0 0 0 1px var(--button-hover);
 }
 
 .error {
   font-size: 12px;
   color: #ef4444;
+  position: absolute;
+  bottom: -16px;
+  left: 0;
 }
 
 .datepickerWrapper {
@@ -100,11 +113,10 @@
 }
 
 .form > button {
-  margin-top: 8px;
   align-self: center;
 }
 
-/* Обёртка */
+/* DatePicker */
 :global(.react-datepicker-wrapper) {
   width: 100%;
 }
@@ -123,7 +135,6 @@
   background: var(--white);
 }
 
-/* Стрелка-треугольник сверху */
 :global(.react-datepicker__triangle) {
   display: block;
   fill: var(--white);
@@ -139,7 +150,6 @@
   color: var(--white);
 }
 
-/* Хедер */
 :global(.react-datepicker__header) {
   background: var(--white);
   border-bottom: none;
@@ -147,14 +157,12 @@
   padding: 4px;
 }
 
-/* Месяц и год */
 :global(.react-datepicker__current-month) {
   font-size: var(--fs-16);
   font-weight: var(--fw-semibold);
   margin-bottom: 12px;
 }
 
-/* Названия дней недели */
 :global(.react-datepicker__day-names) {
   display: flex;
   justify-content: space-between;
@@ -174,14 +182,12 @@
   line-height: 1.2;
 }
 
-/* Неделя */
 :global(.react-datepicker__week) {
   display: flex;
   justify-content: space-between;
   margin-bottom: 2px;
 }
 
-/* Дни */
 :global(.react-datepicker__day) {
   width: 36px;
   height: 34px;
@@ -200,7 +206,6 @@
   color: var(--button);
 }
 
-/* Выбранный день */
 :global(.react-datepicker__day--selected),
 :global(.react-datepicker__day--selected:hover) {
   background: var(--button);
@@ -209,7 +214,6 @@
   font-weight: 700;
 }
 
-/* Сегодня */
 :global(.react-datepicker__day--today) {
   background: var(--button);
   color: var(--white);
@@ -217,12 +221,10 @@
   font-weight: 700;
 }
 
-/* Дни другого месяца */
 :global(.react-datepicker__day--outside-month) {
   color: #d1d5db;
 }
 
-/* Недоступные дни */
 :global(.react-datepicker__day--disabled) {
   color: #d1d5db;
   cursor: not-allowed;
@@ -233,7 +235,6 @@
   color: #d1d5db;
 }
 
-/* Навигация */
 :global(.react-datepicker__navigation) {
   top: 16px;
 }
@@ -251,11 +252,11 @@
   border-color: #2558d9;
 }
 
-/* Месяц */
 :global(.react-datepicker__month) {
   margin: 0;
   padding-top: 8px;
 }
+
 :global(.react-datepicker__week:nth-child(6)) {
   display: none;
 }

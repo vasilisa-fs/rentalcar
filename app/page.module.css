@@ -5,7 +5,10 @@
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
-  background-image: url('../public/main_background.jpg');
+  background-color: var(--gray);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url('../public/main_background.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -13,7 +16,9 @@
 }
 @media (min-resolution: 192dpi) {
   .home_section {
-    background-image: url('../public/main_background2x.jpg');
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+      url('../public/main_background2x.jpg');
   }
 }
 
@@ -26,19 +31,7 @@
 .text {
   font-weight: var(--fw-semibold);
   font-size: var(--fs-24);
-  line-height: 1.33333;
+  line-height: 1.33;
   color: var(--white);
   margin-bottom: 40px;
-}
-.button {
-  display: inline-block;
-  padding: 12px 88px;
-  background-color: var(--button);
-  color: var(--white);
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-16);
-  border-radius: 12px;
-  width: 276px;
-  height: 44px;
-  text-align: center;
 }

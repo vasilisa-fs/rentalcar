@@ -21,12 +21,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'RentalCar',
-  description: 'A car rental web application',
+  title: 'RentalCar — Find Your Perfect Rental Car',
+  description:
+    'Reliable and budget-friendly car rentals for any journey. Browse our catalog and rent the perfect car in Ukraine.',
+  keywords: [
+    'car rental',
+    'rental cars',
+    'SUV rental',
+    'luxury car rental',
+    'Ukraine car rental',
+    'RentalCar',
+  ],
   openGraph: {
-    title: 'RentalCar',
-    description: 'A car rental web application',
-    url: '',
+    title: 'RentalCar — Find Your Perfect Rental Car',
+    description: 'Reliable and budget-friendly car rentals for any journey.',
+    type: 'website',
+    url: 'https://my-domain.com',
+    siteName: 'RentalCar',
+    images: [
+      {
+        url: 'https://my-domain.com/open_graph.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'RentalCar homepage',
+      },
+    ],
   },
 };
 

@@ -1,20 +1,28 @@
 .infoCard {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+}
+
+/* HEADER */
+
+.header {
   display: flex;
   flex-direction: column;
 }
 
-/* Title row */
 .titleRow {
   display: flex;
   align-items: baseline;
-  gap: 16px;
+  gap: 8px;
   margin-bottom: 8px;
 }
 
 .carTitle {
   font-weight: 600;
   font-size: 24px;
-  line-height: 1.33333;
+  line-height: 1.33;
   color: #101828;
 }
 
@@ -26,7 +34,8 @@
   white-space: nowrap;
 }
 
-/* Meta: location + mileage */
+/* META */
+
 .meta {
   display: flex;
   align-items: center;
@@ -37,23 +46,28 @@
 .metaItem {
   display: flex;
   align-items: center;
+
   gap: 4px;
+
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
+
   color: #101828;
 }
 
-/* Price */
+/* PRICE */
+
 .price {
   font-weight: 600;
   font-size: 24px;
-  line-height: 1.33333;
+  line-height: 1.33;
   color: #3470ff;
   margin-bottom: 32px;
 }
 
-/* Description */
+/* DESCRIPTION */
+
 .description {
   font-weight: 500;
   font-size: 16px;
@@ -62,7 +76,17 @@
   margin-bottom: 68px;
 }
 
-/* Section title */
+/* SECTION */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 110px;
+}
+.section:last-child {
+  margin-bottom: 0;
+}
+
 .sectionTitle {
   font-weight: 600;
   font-size: 20px;
@@ -71,57 +95,24 @@
   margin-bottom: 20px;
 }
 
-/* Check list */
-.checkList {
+/* LIST */
+
+.list {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-bottom: 110px;
 }
 
-.checkItem {
+.listItem {
   display: flex;
   align-items: center;
   gap: 8px;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
-  color: #101828;
 }
 
-.checkItem svg {
+.listItem svg {
   flex-shrink: 0;
-}
-
-/* Spec list */
-.specList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 110px;
-}
-
-.specItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #101828;
-}
-
-.specItem svg {
-  flex-shrink: 0;
-}
-
-/* No divider needed — margin-bottom handles spacing */
-.divider {
-  display: none;
 }

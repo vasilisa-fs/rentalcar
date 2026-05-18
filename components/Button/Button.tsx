@@ -9,6 +9,9 @@ type ButtonProps = {
   variant?: 'primary' | 'outline';
   size?: 'md' | 'lg';
   disabled?: boolean;
+  isLoading?: boolean;
+  loadingText?: string;
+  target?: '_blank' | '_self';
 };
 
 const Button = ({
@@ -19,12 +22,20 @@ const Button = ({
   variant = 'primary',
   size = 'md',
   disabled,
+  isLoading,
+  target,
+  loadingText,
 }: ButtonProps) => {
   const classes = `${css.button} ${css[variant]} ${css[size]}`;
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link
+        href={href}
+        className={classes}
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+      >
         {children}
       </Link>
     );
@@ -34,10 +45,10 @@ const Button = ({
     <button
       type={type}
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || isLoading}
       className={classes}
     >
-      {children}
+      {isLoading ? (loadingText ?? children) : children}
     </button>
   );
 };
