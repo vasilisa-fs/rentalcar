@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 import css from './BookingForm.module.css';
 import Button from '../Button/Button';
 
-interface Props {
+interface BookingFormProps {
   carId: string;
 }
 
@@ -28,7 +28,7 @@ const initialValues: BookingFormValues = {
   comment: '',
 };
 
-const BookingForm = ({ carId }: Props) => {
+const BookingForm = ({ carId }: BookingFormProps) => {
   const { mutate, isPending } = useMutation({
     mutationFn: ({ name, email, comment }: BookingFormValues) =>
       submitBooking(carId, {
@@ -68,7 +68,6 @@ const BookingForm = ({ carId }: Props) => {
         {({ setFieldValue, values }) => (
           <Form className={css.form} noValidate>
             <div className={css.fields}>
-              {/* Name */}
               <Field name="name">
                 {({ field, meta }: FieldProps) => (
                   <div className={css.fieldSet}>
@@ -85,7 +84,6 @@ const BookingForm = ({ carId }: Props) => {
                 )}
               </Field>
 
-              {/* Email */}
               <Field name="email">
                 {({ field, meta }: FieldProps) => (
                   <div className={css.fieldSet}>
@@ -102,7 +100,6 @@ const BookingForm = ({ carId }: Props) => {
                 )}
               </Field>
 
-              {/* Booking Date */}
               <div className={css.fieldSet}>
                 <DatePicker
                   selected={
@@ -127,7 +124,6 @@ const BookingForm = ({ carId }: Props) => {
                 />
               </div>
 
-              {/* Comment */}
               <Field name="comment">
                 {({ field, meta }: FieldProps) => (
                   <div className={css.fieldSet}>

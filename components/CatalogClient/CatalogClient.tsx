@@ -14,7 +14,6 @@ const LIMIT = 12;
 
 const CatalogClient = () => {
   const [filters, setFilters] = useState<CarFilters>({});
-
   const {
     data,
     fetchNextPage,

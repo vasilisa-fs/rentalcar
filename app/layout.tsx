@@ -36,11 +36,11 @@ export const metadata: Metadata = {
     title: 'RentalCar — Find Your Perfect Rental Car',
     description: 'Reliable and budget-friendly car rentals for any journey.',
     type: 'website',
-    url: 'https://my-domain.com',
+    url: 'https://rentalcar-drab-chi.vercel.app',
     siteName: 'RentalCar',
     images: [
       {
-        url: 'https://my-domain.com/open_graph.jpg',
+        url: 'https://rentalcar-drab-chi.vercel.app/open_graph.jpg',
         width: 1200,
         height: 630,
         alt: 'RentalCar homepage',

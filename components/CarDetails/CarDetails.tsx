@@ -1,5 +1,4 @@
 import { Car } from '@/types/cars';
-
 import css from './CarDetails.module.css';
 
 interface Props {
@@ -14,17 +13,13 @@ const CarDetails = ({ car }: Props) => {
 
   return (
     <div className={css.infoCard}>
-      {/* HEADER */}
-
       <div className={css.header}>
         <div className={css.titleRow}>
           <h1 className={css.carTitle}>
             {car.brand} {car.model}, {car.year}
           </h1>
-
           <span className={css.articleId}>Id: {car.stockNumber}</span>
         </div>
-
         <div className={css.meta}>
           <span className={css.metaItem}>
             <svg width="16" height="16">
@@ -32,21 +27,15 @@ const CarDetails = ({ car }: Props) => {
             </svg>
             {city}, {country}
           </span>
-
           <span className={css.metaItem}>Mileage: {mileage} km</span>
         </div>
-
         <p className={css.price}>${car.rentalPrice}</p>
       </div>
 
-      {/* DESCRIPTION */}
-
       <p className={css.description}>{car.description}</p>
 
-      {/* RENTAL CONDITIONS */}
       <section className={css.section}>
         <h3 className={css.sectionTitle}>Rental Conditions:</h3>
-
         <ul className={css.list}>
           {car.rentalConditions?.map((condition, index) => (
             <li key={index} className={css.listItem}>
@@ -59,8 +48,6 @@ const CarDetails = ({ car }: Props) => {
           ))}
         </ul>
       </section>
-
-      {/* SPECIFICATIONS */}
 
       <section className={css.section}>
         <h3 className={css.sectionTitle}>Car Specifications:</h3>
@@ -95,8 +82,6 @@ const CarDetails = ({ car }: Props) => {
           </li>
         </ul>
       </section>
-
-      {/* FEATURES */}
 
       <section className={css.section}>
         <h3 className={css.sectionTitle}>Accessories and functionalities:</h3>

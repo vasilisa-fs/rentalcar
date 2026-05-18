@@ -9,9 +9,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .logo_link {
   padding: 24px 0;
 }
+
 .logo {
   width: 104px;
   height: 16px;
@@ -22,13 +24,16 @@
   gap: 32px;
   justify-content: flex-end;
 }
+
 .navigation_link {
   padding: 24px 0;
   transition: color 250ms ease-in-out;
 }
+
 .navigation_link.active {
   color: var(--button-hover);
 }
+
 .navigation_link:focus,
 .navigation_link:hover {
   color: var(--button-hover);

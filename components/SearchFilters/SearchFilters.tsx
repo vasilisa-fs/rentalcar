@@ -35,9 +35,7 @@ const initialValues: FiltersFormValues = {
 
 const formatNumber = (val: string): string => {
   const clean = val.replace(/,/g, '');
-
   if (clean === '' || isNaN(Number(clean))) return val;
-
   return Number(clean).toLocaleString('en-US');
 };
 
@@ -45,28 +43,24 @@ const cleanNumber = (val: string): string => val.replace(/,/g, '');
 
 const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
   const [isSearched, setIsSearched] = useState(false);
-
   const [isSearching, setIsSearching] = useState(false);
-
+  
   const { data: filters } = useQuery({
     queryKey: ['filters'],
     queryFn: fetchFilters,
   });
 
   const brands = filters?.brands ?? [];
-
   const prices = filters
     ? Array.from(
         { length: (filters.price.max - filters.price.min) / 10 + 1 },
         (_, i) => String(filters.price.min + i * 10)
       )
     : [];
-
   const brandOptions: SelectOption[] = brands.map((brand) => ({
     value: brand,
     label: brand,
   }));
-
   const priceOptions: SelectOption[] = prices.map((price) => ({
     value: price,
     label: price,
@@ -76,42 +70,31 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
     setIsSearched(false);
     setIsSearching(false);
   };
-
+  
   const handleSubmit = async (
     values: FiltersFormValues,
     actions: FormikHelpers<FiltersFormValues>
   ) => {
     const hasMax = !!values.maxMileage;
-
     const hasMin = !!values.minMileage;
-
     setIsSearching(true);
-
     onSearch({
       brand: values.brand || undefined,
-
       price: values.price || undefined,
-
       minMileage: hasMin
         ? cleanNumber(values.minMileage)
         : hasMax
           ? '0'
           : undefined,
-
       maxMileage: values.maxMileage
         ? cleanNumber(values.maxMileage)
         : undefined,
     });
-
     await new Promise((resolve) => setTimeout(resolve, 500));
-
     setIsSearching(false);
-
     setIsSearched(true);
-
     actions.setSubmitting(false);
   };
-
   return (
     <Formik
       initialValues={initialValues}
@@ -122,13 +105,11 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
         <Form className={css.filters}>
           <div className={css.group}>
             <label className={css.label}>Car brand</label>
-
             <Field name="brand">
               {({ field, form }: FieldProps) => {
                 const selectedOption =
                   brandOptions.find((option) => option.value === field.value) ||
                   null;
-
                 return (
                   <Select
                     instanceId="brand-select"
@@ -143,7 +124,6 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
                         field.name,
                         option ? option.value : ''
                       );
-
                       resetSearchState();
                     }}
                   />
@@ -154,13 +134,11 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
 
           <div className={css.group}>
             <label className={css.label}>Price / 1 hour</label>
-
             <Field name="price">
               {({ field, form }: FieldProps) => {
                 const selectedOption =
                   priceOptions.find((option) => option.value === field.value) ||
                   null;
-
                 return (
                   <Select
                     instanceId="price-select"
@@ -174,7 +152,6 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
                       if (context === 'value') {
                         return `To $${option.value}`;
                       }
-
                       return option.label;
                     }}
                     onChange={(option) => {
@@ -182,7 +159,6 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
                         field.name,
                         option ? option.value : ''
                       );
-
                       resetSearchState();
                     }}
                   />
@@ -193,7 +169,6 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
 
           <div className={css.mileageGroup}>
             <label className={css.label}>Car mileage / km</label>
-
             <div className={css.mileageRow}>
               <Field name="minMileage">
                 {({ field, form, meta }: FieldProps) => (
@@ -206,7 +181,6 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
                       className={`${css.input} ${css.inputLeft}`}
                       onChange={(e) => {
                         const raw = e.target.value.replace(/,/g, '');
-
                         if (
                           raw === '' ||
                           (Number(raw) >= 0 && !isNaN(Number(raw)))
@@ -220,7 +194,6 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
                         }
                       }}
                     />
-
                     {meta.touched && meta.error && (
                       <span className={css.error}>{meta.error}</span>
                     )}
@@ -232,7 +205,6 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
                 {({ field, form, meta }: FieldProps) => (
                   <div className={css.inputWrapper}>
                     <span className={css.inputPrefix}>To</span>
-
                     <input
                       {...field}
                       type="text"
@@ -253,7 +225,6 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
                         }
                       }}
                     />
-
                     {meta.touched && meta.error && (
                       <span className={css.error}>{meta.error}</span>
                     )}

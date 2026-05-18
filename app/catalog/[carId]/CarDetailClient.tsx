@@ -8,11 +8,11 @@ import Loader from '@/components/Loader/Loader';
 import css from './page.module.css';
 import Image from 'next/image';
 
-interface Props {
+interface CarDetailClientProps {
   carId: string;
 }
 
-export default function CarDetailClient({ carId }: Props) {
+export default function CarDetailClient({ carId }: CarDetailClientProps) {
   const {
     data: car,
     isLoading,
@@ -21,7 +21,6 @@ export default function CarDetailClient({ carId }: Props) {
     queryKey: ['car', carId],
     queryFn: () => fetchCarById(carId),
   });
-
   if (isLoading) return <Loader />;
   if (isError || !car) return <p className={css.error}>Car not found.</p>;
 
@@ -38,10 +37,8 @@ export default function CarDetailClient({ carId }: Props) {
               className={css.image}
             />
           </div>
-
           <BookingForm carId={carId} />
         </div>
-
         <div className={css.right}>
           <CarDetails car={car} />
         </div>

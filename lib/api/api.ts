@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { Car, CarsResponse, CarFilters, FiltersResponse } from '@/types/cars';
 
 const api = axios.create({
@@ -18,19 +17,16 @@ export const fetchCars = async (
       ...filters,
     },
   });
-
   return data;
 };
 
 export const fetchCarById = async (id: string): Promise<Car> => {
   const { data } = await api.get<Car>(`/cars/${id}`);
-
   return data;
 };
 
 export const fetchFilters = async (): Promise<FiltersResponse> => {
   const { data } = await api.get<FiltersResponse>('/cars/filters');
-
   return data;
 };
 
@@ -43,6 +39,5 @@ export const submitBooking = async (
   }
 ): Promise<{ message: string }> => {
   const { data } = await api.post(`/cars/${carId}/booking-requests`, body);
-
   return data;
 };

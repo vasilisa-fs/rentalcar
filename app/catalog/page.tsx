@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     title: 'Car Catalog — RentalCar',
     description: 'Browse available rental cars and choose the perfect option.',
     type: 'website',
-    url: 'https://my-domain.com/catalog',
+    url: 'https://rentalcar-drab-chi.vercel.app/catalog',
     siteName: 'RentalCar',
     images: [
       {
-        url: 'https://my-domain.com/open_graph.jpg',
+        url: 'https://rentalcar-drab-chi.vercel.app/open_graph.jpg',
         width: 1200,
         height: 630,
         alt: 'RentalCar catalog',
